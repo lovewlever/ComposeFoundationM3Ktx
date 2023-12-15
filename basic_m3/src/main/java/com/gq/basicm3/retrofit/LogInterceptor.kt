@@ -92,8 +92,10 @@ class LogInterceptor : Interceptor {
                 charset?.let { bufferedSink.readString(it) }
             }
 
-            val jsonEl = JsonParser.parseString(params)
-            val isJson = jsonEl.isJsonArray || jsonEl.isJsonObject
+            val jsonEl = try {
+                JsonParser.parseString(params)
+            } catch (e: Exception) { null }
+            val isJson = jsonEl?.isJsonArray == true || jsonEl?.isJsonObject == true
 
 
             if (isJson) {

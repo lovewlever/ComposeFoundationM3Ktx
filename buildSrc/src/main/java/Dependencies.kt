@@ -15,6 +15,7 @@ object BuildVersion {
 
 object Libs {
 
+    private const val appcompatVersion = "1.6.1"
     private const val lifecycleVersion = "2.6.2"
     private const val pagingVersion = "3.2.1"
     private const val dataStoreVersion = "1.0.0"
@@ -24,8 +25,11 @@ object Libs {
     const val hiltPluginVersion = "2.48"
     private const val hiltComposeVersion = "1.1.0"
 
-    const val AndroidXBrowser = "'androidx.browser:browser:1.7.0"
+
+    const val AndroidXAppcompat = "androidx.appcompat:appcompat:$appcompatVersion"
+    const val AndroidXAppcompatResources = "androidx.appcompat:appcompat-resources:$appcompatVersion"
     const val AndroidXCoreKtx = "androidx.core:core-ktx:1.12.0"
+    const val AndroidXBrowser = "'androidx.browser:browser:1.7.0"
 
     //    def composeBom = platform('androidx.compose:compose-bom:2023.01.00')
     //    implementation composeBom

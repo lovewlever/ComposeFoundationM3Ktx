@@ -1,7 +1,6 @@
-package com.gq.foundation.retrofit
+package com.gq.foundation.retrofit.interceptor
 
 
-import com.gq.basicm3.common.DataStoreCommon
 import okhttp3.HttpUrl.Companion.toHttpUrl
 import okhttp3.Interceptor
 import okhttp3.Response

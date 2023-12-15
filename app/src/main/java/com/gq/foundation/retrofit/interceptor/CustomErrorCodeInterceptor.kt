@@ -1,4 +1,4 @@
-package com.gq.foundation.retrofit
+package com.gq.foundation.retrofit.interceptor
 
 import com.gq.basicm3.common.GsonCommon
 import com.gq.foundation.data.ResultEntity

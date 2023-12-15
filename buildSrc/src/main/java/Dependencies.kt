@@ -131,6 +131,9 @@ object Libs {
     const val StartUpRuntime = "androidx.startup:startup-runtime:1.1.1"
     const val HiltAndroid = "com.google.dagger:hilt-android:$hiltPluginVersion"
     const val HiltNavigationCompose = "androidx.hilt:hilt-navigation-compose:$hiltComposeVersion"
+    // https://github.com/Blankj/AndroidUtilCode/tree/master?tab=readme-ov-file
+    const val BlankJUtilCodex = "com.blankj:utilcodex:1.31.1"
+
     // - - - -
     // Kapt
     const val KaptRoomCompiler = "androidx.room:room-compiler:$roomVersion"

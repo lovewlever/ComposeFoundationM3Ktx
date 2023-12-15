@@ -3,6 +3,8 @@ package com.gq.basicm3.common
 import android.annotation.SuppressLint
 import android.util.DisplayMetrics
 import android.view.Window
+import com.blankj.utilcode.util.BarUtils
+import com.blankj.utilcode.util.ScreenUtils
 import com.gq.basicm3.AppContext
 
 
@@ -14,19 +16,13 @@ import com.gq.basicm3.AppContext
 object DensityCommon {
     private lateinit var outMetrics: DisplayMetrics
     private var screenScale: Float = -1F
-    var statusBarHeight: Int = -1
-        private set
+
+    val statusBarHeight: Int by lazy { BarUtils.getStatusBarHeight() }
     var navigationBarHeight: Int = -1
         private set
 
-    @SuppressLint("PrivateApi")
+
     fun initDisplayMetrics(window: Window) {
-        // 状态栏高度
-        val c = Class.forName("com.android.internal.R\$dimen")
-        val obj = c.newInstance()
-        val field = c.getField("status_bar_height")
-        val x = field.get(obj)
-        statusBarHeight = AppContext.application.resources.getDimensionPixelSize(x as Int)
         // 屏幕宽高信息
         outMetrics = DisplayMetrics()
         screenScale = outMetrics.density

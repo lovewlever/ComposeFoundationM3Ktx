@@ -184,6 +184,7 @@ dependencies {
     implementation(Libs.HiltAndroid)
     implementation(Libs.HiltNavigationCompose)
     implementation(Libs.Timber)
+    implementation(Libs.BlankJUtilCodex)
 
     implementation ("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${BuildVersion.KotlinCompilerVersion}")
     implementation ("org.jetbrains.kotlin:kotlin-stdlib-jdk7:${BuildVersion.KotlinCompilerVersion}")

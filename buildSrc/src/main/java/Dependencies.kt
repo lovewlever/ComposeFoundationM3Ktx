@@ -1,4 +1,13 @@
 import org.gradle.api.JavaVersion
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
+
+object ProductFlavors {
+    fun versionNameSuffixTime(): String = SimpleDateFormat("MMddHHmm", Locale.CANADA).format(Date())
+
+    fun packageTime(): Long = System.currentTimeMillis()
+}
 
 object BuildVersion {
     const val CompileSdk = 34

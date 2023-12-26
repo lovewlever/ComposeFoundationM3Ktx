@@ -97,7 +97,7 @@ object Libs {
     const val Retrofit2Okhttp3 = "com.squareup.okhttp3:okhttp:4.10.0"
 
     // Gson
-    const val Gson = "com.google.code.gson:gson:2.9.1"
+    const val Gson = "com.google.code.gson:gson:2.10.1"
 
     // Coil
     const val CoilCompose = "io.coil-kt:coil-compose:2.0.0-rc02"

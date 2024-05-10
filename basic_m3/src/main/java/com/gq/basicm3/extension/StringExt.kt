@@ -22,6 +22,13 @@ inline fun String.matchPhoneNumber(): Boolean =
     Pattern.compile("^(?:(?:\\+|00)86)?1[3-9]\\d{9}\$").matcher(this).matches()
 
 /**
+ * 匹配邮箱
+ */
+inline fun String.matchEmail(): Boolean =
+    Pattern.compile("^[A-Za-z0-9\\u4e00-\\u9fa5]+@[a-zA-Z0-9_-]+(\\.[a-zA-Z0-9_-]+)+\$").matcher(this).matches()
+
+
+/**
  * 匹配url
  */
 inline fun String.matchUrl(): Boolean =

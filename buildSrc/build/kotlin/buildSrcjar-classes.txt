@@ -1,1 +1,0 @@
-D:\AndroidProjects\ComposeFoundationM3Ktx\buildSrc\build\classes\kotlin\main\BuildVersion.class;D:\AndroidProjects\ComposeFoundationM3Ktx\buildSrc\build\classes\kotlin\main\Libs.class

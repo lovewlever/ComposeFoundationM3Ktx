@@ -28,11 +28,12 @@ fun DialogBottomDoubleButton2(
     confirmTextColor: Color = MaterialTheme.colorScheme.primary,
     cancelTextSize: TextUnit = 14.sp,
     confirmTextSize: TextUnit = 14.sp,
+    dividerColor: Color = MaterialTheme.colorScheme.DividerColor,
     onCancelClick: () -> Unit = {},
     onConfirmClick: () -> Unit = {},
 ) {
     Column {
-        Divider(color = MaterialTheme.colorScheme.DividerColor, thickness = 0.5.dp)
+        Divider(color = dividerColor, thickness = 0.5.dp)
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -51,7 +52,7 @@ fun DialogBottomDoubleButton2(
             Spacer(modifier = Modifier
                 .fillMaxHeight()
                 .width(0.5.dp)
-                .background(color = MaterialTheme.colorScheme.DividerColor))
+                .background(color = dividerColor))
             TextButton(
                 modifier = Modifier
                     .fillMaxHeight()

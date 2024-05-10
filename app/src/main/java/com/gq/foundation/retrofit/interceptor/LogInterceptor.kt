@@ -1,8 +1,7 @@
-package com.gq.basicm3.retrofit
+package com.gq.foundation.retrofit.interceptor
 
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
-import com.gq.basicm3.common.GsonCommon
 import com.gq.basicm3.extension.toEntityDataByGson
 import okhttp3.*
 import okhttp3.ResponseBody.Companion.toResponseBody

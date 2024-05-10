@@ -2,6 +2,7 @@ package com.gq.basicm3.basis
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
+import androidx.activity.enableEdgeToEdge
 import androidx.core.view.WindowCompat
 import com.gq.basicm3.common.DensityCommon
 
@@ -12,12 +13,13 @@ open class BasicActivity: ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         DensityCommon.initDisplayMetrics(window)
+        enableEdgeToEdge()
         super.onCreate(savedInstanceState)
     }
 
     override fun onResume() {
         super.onResume()
-        setImmersiveMode()
+        //setImmersiveMode()
     }
 
     private fun setImmersiveMode() {

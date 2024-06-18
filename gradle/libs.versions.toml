@@ -1,0 +1,102 @@
+[versions]
+compileSdk = "34"
+minSdk = "24"
+targetSdk = "34"
+versionCode = "1"
+versionName = "1.0.0"
+kotlinCompilerExtensionVersion = "2.0.0"
+
+agp = "8.5.0"
+kotlin = "2.0.0"
+coreKtx = "1.13.1"
+junit = "4.13.2"
+junitVersion = "1.1.5"
+espressoCore = "3.5.1"
+lifecycleRuntimeKtx = "2.8.2"
+activityCompose = "1.9.0"
+composeBom = "2024.06.00"
+androidLibrary = "8.2.2"
+hiltPluginVersion = "2.49"
+hiltComposeVersion = "1.2.0"
+roomVersion = "2.6.1"
+dataStoreVersion = "1.1.1"
+appcompatVersion = "1.7.0"
+pagingVersion = "3.3.0"
+
+[libraries]
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
+androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
+androidx-runtime-livedata = { group = "androidx.compose.runtime", name = "runtime-livedata" }
+androidx-ui = { group = "androidx.compose.ui", name = "ui" }
+androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
+androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
+androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
+androidx-browser = { module = "androidx.browser:browser", version = "1.8.0" }
+androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompatVersion" }
+androidx-appcompatResources = { module = "androidx.appcompat:appcompat-resources", version.ref = "appcompatVersion" }
+#Lifecycle
+lifecycleRuntimeKtx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
+lifecycleRuntimeCompose = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "lifecycleRuntimeKtx" }
+lifecycleViewModelKtx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleRuntimeKtx" }
+lifecycleViewModelSavedState = { module = "androidx.lifecycle:lifecycle-viewmodel-savedstate", version.ref = "lifecycleRuntimeKtx" }
+lifecycleViewModelCompose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycleRuntimeKtx" }
+lifecycleLiveDataKtx = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "lifecycleRuntimeKtx" }
+lifecycleService = { module = "androidx.lifecycle:lifecycle-service", version.ref = "lifecycleRuntimeKtx" }
+lifecycleCommonJava8 = { module = "androidx.lifecycle:lifecycle-common-java8", version.ref = "lifecycleRuntimeKtx" }
+lifecycleProcess = { module = "androidx.lifecycle:lifecycle-process", version.ref = "lifecycleRuntimeKtx" }
+lifecycleReactiveStreamsKtx = { module = "androidx.lifecycle:lifecycle-reactivestreams-ktx", version.ref = "lifecycleRuntimeKtx" }
+#Paging3
+paging3-runtime-ktx = { module = "androidx.paging:paging-runtime-ktx", version.ref = "pagingVersion" }
+paging3-compose = { module = "androidx.paging:paging-compose", version.ref = "pagingVersion" }
+#Room
+androidx-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "roomVersion" }
+androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "roomVersion" }
+#DataStore
+androidx-datastore-core = { group = "androidx.datastore", name = "datastore-preferences-core", version.ref = "dataStoreVersion" }
+androidx-datastore-preferences = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "dataStoreVersion" }
+#Navigation
+androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version = "2.7.7" }
+#Hilt
+hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hiltPluginVersion" }
+hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hiltComposeVersion" }
+#Coil
+coil-compose = { group = "io.coil-kt", name = "coil-compose", version = "2.0.0-rc02" }
+coil-video = { group = "io.coil-kt", name = "coil-video", version = "2.0.0-rc02" }
+#Other
+timber = { module = "com.jakewharton.timber:timber", version = "5.0.1" }
+retrofit2 = { module = "com.squareup.retrofit2:retrofit", version = "2.9.0" }
+retrofit2-converter-gson = { module = "com.squareup.retrofit2:converter-gson", version = "2.9.0" }
+retrofit2-okhttp3 = { module = "com.squareup.okhttp3:okhttp", version = "4.12.0" }
+gson = { module = "com.google.code.gson:gson", version = "2.11.0" }
+document-file = { module = "androidx.documentfile:documentfile", version = "1.0.1" }
+commons-codec = { module = "commons-codec:commons-codec", version = "1.16.1" }
+bugly-crash-report = { module = "com.tencent.bugly:crashreport", version = "latest.release" }
+bugly-native-crash-report = { module = "com.tencent.bugly:nativecrashreport", version = "latest.release" }
+androidx-startup = { module = "androidx.startup:startup-runtime", version = "1.1.1" }
+kotlin-stdlib-jdk8 = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref = "kotlin" }
+kotlin-stdlib-jdk7 = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk7", version.ref = "kotlin" }
+kotlin-stdlib-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
+
+#Kapt
+kapt-hilt-dagger-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hiltPluginVersion" }
+kapt-hilt-compiler = { group = "androidx.hilt", name = "hilt-compiler", version.ref = "hiltComposeVersion" }
+kapt-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "roomVersion" }
+kapt-lifecycle-compiler = { group = "androidx.lifecycle", name = "lifecycle-compiler", version.ref = "lifecycleRuntimeKtx" }
+
+[bundles]
+lifecycle = ["lifecycleRuntimeKtx", "lifecycleViewModelKtx", "lifecycleViewModelSavedState", "lifecycleViewModelCompose", "lifecycleLiveDataKtx", "lifecycleService", "lifecycleCommonJava8", "lifecycleProcess", "lifecycleReactiveStreamsKtx", "lifecycleRuntimeCompose", "androidx-runtime-livedata"]
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+android-library = { id = "com.android.library", version.ref = "androidLibrary" }
+hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hiltPluginVersion" }
+google-devtools-ksp = { id = "com.google.devtools.ksp", version = "2.0.0-1.0.21" }
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }

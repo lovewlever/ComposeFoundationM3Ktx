@@ -12,25 +12,39 @@ object AppContext {
 
     lateinit var application: Application
 
-    fun initialization(application: Application, ) {
+    var initProcessPhoenix = false
+    var initTimberDebugTree = true
+    var initTimberFileTree = false
+    var initExceptionHandler = true
+
+    fun initialization(application: Application, init: AppContext.() -> Unit = {}) {
         this.application = application
-        if (ProcessPhoenix.isPhoenixProcess(application)) {
-            return
+        this.init()
+        if (initProcessPhoenix) {
+            if (ProcessPhoenix.isPhoenixProcess(application)) {
+                return
+            }
         }
-        // 日志
-        if (application.applicationInfo.isApkInDebug()) {
-            Timber.plant(Timber.DebugTree())
-        } else {
-            Timber.plant(TimberCloseTree())
+
+        if (initTimberDebugTree) {
+            // 日志
+            if (application.applicationInfo.isApkInDebug()) {
+                Timber.plant(Timber.DebugTree())
+            } else {
+                Timber.plant(TimberCloseTree())
+            }
         }
-        Timber.plant(TimberFileTree())
-        setDefaultUncaughtExceptionHandler()
+
+        if (initTimberFileTree) {
+            Timber.plant(TimberFileTree())
+        }
+
+        if (initExceptionHandler) {
+            setDefaultUncaughtExceptionHandler()
+        }
     }
 
     private fun setDefaultUncaughtExceptionHandler() {
         Thread.setDefaultUncaughtExceptionHandler(AppCrashHandler())
     }
-
-    fun isApkInDebug() =
-        application.applicationInfo.isApkInDebug()
 }

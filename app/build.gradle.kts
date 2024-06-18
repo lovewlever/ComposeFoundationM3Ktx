@@ -1,21 +1,22 @@
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.hilt.android)
+    alias(libs.plugins.kotlin.compose)
     id ("kotlin-kapt")
     id ("kotlin-parcelize")
-    id ("com.google.dagger.hilt.android")
 }
 
 android {
     namespace = "com.gq.foundation"
-    compileSdk = BuildVersion.CompileSdk
+    compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
         applicationId = "com.gq.foundation"
-        minSdk = BuildVersion.MinSdk
-        targetSdk = BuildVersion.TargetSdk
-        versionCode = BuildVersion.VersionCode
-        versionName = BuildVersion.VersionName
+        minSdk = libs.versions.minSdk.get().toInt()
+        targetSdk = libs.versions.targetSdk.get().toInt()
+        versionCode = libs.versions.versionCode.get().toInt()
+        versionName = libs.versions.minSdk.get()
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -43,7 +44,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = BuildVersion.KotlinCompilerExtensionVersion
+        kotlinCompilerExtensionVersion = libs.versions.kotlinCompilerExtensionVersion.get()
     }
     packaging {
         resources {
@@ -58,69 +59,67 @@ kapt {
 
 dependencies {
 
-/*  testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-    androidTestImplementation(platform("androidx.compose:compose-bom:2023.08.00"))
-    debugImplementation("androidx.compose.ui:ui-test-manifest")*/
-
     implementation(project(":basic_m3"))
 
-    implementation(Libs.AndroidXCoreKtx)
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.appcompatResources)
 
-    val composeBom = platform(Libs.ComposeBom)
-    implementation(composeBom)
-    androidTestImplementation(composeBom)
-    implementation(Libs.ComposeMD3)
-    implementation(Libs.ComposeMDIconsCore)
-    implementation(Libs.ComposeMDIconsExtended)
-    implementation(Libs.ComposeMDWinSizeUtil)
-    implementation(Libs.ComposeUi)
-    implementation(Libs.ComposeUiGraphics)
-    implementation(Libs.ComposeActivity)
-    implementation(Libs.LifecycleViewModelCompose)
-    implementation(Libs.ComposePreview)
-    debugImplementation(Libs.DebugComposePreview)
-    androidTestImplementation(Libs.AndroidTestComposeUI)
-    debugImplementation(Libs.DebugComposeTest)
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.bundles.lifecycle)
+    implementation(libs.androidx.activity.compose)
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.ui)
+    implementation(libs.androidx.ui.graphics)
+    implementation(libs.androidx.ui.tooling.preview)
+    implementation(libs.androidx.material3)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
+    androidTestImplementation(platform(libs.androidx.compose.bom))
+    androidTestImplementation(libs.androidx.ui.test.junit4)
+    debugImplementation(libs.androidx.ui.tooling)
+    debugImplementation(libs.androidx.ui.test.manifest)
 
-    implementation(Libs.Paging3RuntimeKtx)
-    implementation(Libs.Paging3Compose)
+    implementation(libs.paging3.runtime.ktx)
+    implementation(libs.paging3.compose)
 
-    implementation(Libs.DataStoreCPreferencesCore)
-    implementation(Libs.DataStoreCPreferences)
 
-    implementation(Libs.NavigationCompose)
+    implementation(libs.androidx.datastore.preferences)
+    implementation(libs.androidx.datastore.core)
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.bundles.lifecycle)
 
-    implementation(Libs.LifecycleRuntimeKtx)
+    implementation(libs.retrofit2)
+    implementation(libs.retrofit2.converter.gson)
+    implementation(libs.retrofit2.okhttp3)
 
-    implementation(Libs.Retrofit2)
-    implementation(Libs.Retrofit2ConverterGson)
-    implementation(Libs.Retrofit2Okhttp3)
+    implementation(libs.gson)
 
-    implementation(Libs.Gson)
-
-    implementation(Libs.CoilCompose)
+    implementation(libs.coil.compose)
     implementation(Libs.AccompanistSystemUIController)
+    implementation(Libs.AccompanistSwipeRefresh)
     implementation(Libs.AccompanistPager)
     implementation(Libs.AccompanistPagerIndicators)
     implementation(Libs.AccompanistPagerIndicators)
     implementation(Libs.AccompanistPermissions)
     implementation(Libs.AccompanistPlaceholder)
     implementation(Libs.AccompanistWebView)
-    
-    implementation(Libs.CameraXCore)
-    implementation(Libs.CameraX2)
 
-    implementation(Libs.DocumentFile)
-    implementation(Libs.CommonsCodec)
+    implementation(libs.document.file)
+    implementation(libs.commons.codec)
+    implementation(libs.hilt.android)
+    implementation(libs.hilt.navigation.compose)
     implementation(Libs.ProcessPhoenix)
-    implementation(Libs.HiltAndroid)
-    implementation(Libs.HiltNavigationCompose)
-    implementation(Libs.Timber)
+    implementation(Libs.BlankJUtilCodex)
+    implementation(libs.timber)
+
+    implementation(libs.kotlin.stdlib.jdk8)
+    implementation(libs.kotlin.stdlib.jdk7)
+    implementation(libs.kotlin.stdlib.reflect)
 
 
-
-    kapt(Libs.KaptHiltCompiler)
-    kapt(Libs.KaptDaggerHiltCompiler)
+    kapt(libs.kapt.hilt.dagger.compiler)
+    kapt(libs.kapt.hilt.compiler)
+    kapt(libs.kapt.lifecycle.compiler)
 }

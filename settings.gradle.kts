@@ -16,3 +16,4 @@ dependencyResolutionManagement {
 rootProject.name = "ComposeFoundationM3Ktx"
 include(":app")
 include(":basic_m3")
+include(":basic-retrofit-compiler")

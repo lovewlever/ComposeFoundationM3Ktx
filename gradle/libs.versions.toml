@@ -22,6 +22,7 @@ roomVersion = "2.6.1"
 dataStoreVersion = "1.1.1"
 appcompatVersion = "1.7.0"
 pagingVersion = "3.3.0"
+material = "1.12.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -89,6 +90,7 @@ kapt-hilt-dagger-compiler = { group = "com.google.dagger", name = "hilt-compiler
 kapt-hilt-compiler = { group = "androidx.hilt", name = "hilt-compiler", version.ref = "hiltComposeVersion" }
 kapt-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "roomVersion" }
 kapt-lifecycle-compiler = { group = "androidx.lifecycle", name = "lifecycle-compiler", version.ref = "lifecycleRuntimeKtx" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 
 [bundles]
 lifecycle = ["lifecycleRuntimeKtx", "lifecycleViewModelKtx", "lifecycleViewModelSavedState", "lifecycleViewModelCompose", "lifecycleLiveDataKtx", "lifecycleService", "lifecycleCommonJava8", "lifecycleProcess", "lifecycleReactiveStreamsKtx", "lifecycleRuntimeCompose", "androidx-runtime-livedata"]

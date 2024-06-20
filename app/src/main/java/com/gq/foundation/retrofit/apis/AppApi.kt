@@ -1,13 +1,12 @@
 package com.gq.foundation.retrofit.apis
 
 import com.gq.foundation.retrofit.RetrofitCall
-import com.lk.retrofit.compiler.annotations.RetrofitApi
-import dagger.hilt.android.scopes.ViewModelScoped
+import com.lk.retrofit.compiler.annotations.BasicRetrofitApi
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST
 
-@RetrofitApi
+@BasicRetrofitApi
 interface AppApi {
 
     /**

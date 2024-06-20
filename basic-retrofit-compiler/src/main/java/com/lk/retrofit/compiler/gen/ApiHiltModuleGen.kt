@@ -6,15 +6,12 @@ import com.google.devtools.ksp.processing.KSPLogger
 import com.google.devtools.ksp.processing.Resolver
 import com.google.devtools.ksp.symbol.KSAnnotated
 import com.google.devtools.ksp.symbol.KSClassDeclaration
-import com.google.devtools.ksp.symbol.KSType
-import com.lk.retrofit.compiler.annotations.RetrofitApi
+import com.lk.retrofit.compiler.annotations.BasicRetrofitApi
 import com.squareup.kotlinpoet.AnnotationSpec
 import com.squareup.kotlinpoet.ClassName
 import com.squareup.kotlinpoet.CodeBlock
 import com.squareup.kotlinpoet.FileSpec
 import com.squareup.kotlinpoet.FunSpec
-import com.squareup.kotlinpoet.KModifier
-import com.squareup.kotlinpoet.TypeName
 import com.squareup.kotlinpoet.TypeSpec
 import com.squareup.kotlinpoet.ksp.toClassName
 import com.squareup.kotlinpoet.ksp.writeTo
@@ -23,7 +20,7 @@ class ApiHiltModuleGen {
 
     fun gen(kspLogger: KSPLogger, kspCodeGenerator: CodeGenerator, resolver: Resolver) {
         val annotateds: Sequence<KSAnnotated> =
-            resolver.getSymbolsWithAnnotation(RetrofitApi::class.java.name)
+            resolver.getSymbolsWithAnnotation(BasicRetrofitApi::class.java.name)
 
         val classDeclarations: Sequence<KSClassDeclaration> =
             annotateds.filterIsInstance<KSClassDeclaration>()

@@ -1,10 +1,9 @@
 plugins {
-    kotlin("kapt")
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.hilt.android)
     alias(libs.plugins.kotlin.compose)
-    id("kotlin-kapt")
+    alias(libs.plugins.google.devtools.ksp)
     id ("kotlin-parcelize")
 }
 
@@ -105,10 +104,6 @@ productFlavors {
     }*/
 }
 
-kapt {
-    correctErrorTypes = true
-}
-
 /*static long releaseTime() {
     return new Date().time
 }
@@ -147,6 +142,7 @@ dependencies {
     implementation(libs.androidx.datastore.core)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.bundles.lifecycle)
+    implementation(libs.bundles.camearX)
 
     implementation(libs.retrofit2)
     implementation(libs.retrofit2.converter.gson)
@@ -177,7 +173,7 @@ dependencies {
     implementation(libs.kotlin.stdlib.reflect)
 
 
-    kapt(libs.kapt.hilt.dagger.compiler)
-    kapt(libs.kapt.hilt.compiler)
-    kapt(libs.kapt.lifecycle.compiler)
+    ksp(libs.kapt.hilt.dagger.compiler)
+    ksp(libs.kapt.hilt.compiler)
+    ksp(libs.kapt.lifecycle.compiler)
 }

@@ -8,7 +8,7 @@ import timber.log.Timber
 import java.lang.reflect.ParameterizedType
 import java.lang.reflect.Type
 
-class RetrofitCall<R> (val obtain: R)
+class RetrofitCall<R> (val response: R)
 
 class CustomCallAdapterFactory: CallAdapter.Factory() {
 

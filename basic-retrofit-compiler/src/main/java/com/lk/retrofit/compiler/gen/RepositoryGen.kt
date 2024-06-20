@@ -7,13 +7,19 @@ import com.google.devtools.ksp.processing.Resolver
 import com.google.devtools.ksp.symbol.KSAnnotated
 import com.google.devtools.ksp.symbol.KSClassDeclaration
 import com.lk.retrofit.compiler.annotations.BasicRetrofitApi
+import com.squareup.kotlinpoet.ANY
 import com.squareup.kotlinpoet.ClassName
 import com.squareup.kotlinpoet.FileSpec
 import com.squareup.kotlinpoet.FunSpec
 import com.squareup.kotlinpoet.KModifier
+import com.squareup.kotlinpoet.LambdaTypeName
 import com.squareup.kotlinpoet.ParameterSpec
+import com.squareup.kotlinpoet.ParameterizedTypeName.Companion.parameterizedBy
 import com.squareup.kotlinpoet.PropertySpec
 import com.squareup.kotlinpoet.TypeSpec
+import com.squareup.kotlinpoet.TypeVariableName
+import com.squareup.kotlinpoet.UNIT
+import com.squareup.kotlinpoet.WildcardTypeName
 import com.squareup.kotlinpoet.ksp.toTypeName
 import com.squareup.kotlinpoet.ksp.writeTo
 
@@ -36,7 +42,7 @@ class RepositoryGen {
             val spec = FileSpec.builder(pkg, "${className}Repository_BasicGen")
                 .addType(
                     // 类名
-                    TypeSpec.classBuilder("${className}Repository_BasicGen")
+                    TypeSpec.classBuilder("${className}Repository")
                         .addModifiers(KModifier.OPEN)
                         .addAnnotation(
                             ClassName(
@@ -58,7 +64,6 @@ class RepositoryGen {
                         .addProperty(
                             PropertySpec.builder(paramApiName, paramClassName)
                                 .mutable(false)
-                                .addModifiers(KModifier.PRIVATE)
                                 .initializer(paramApiName)
                                 .build()
                         )
@@ -71,12 +76,18 @@ class RepositoryGen {
                                 val returnType = func.returnType?.resolve()?.arguments?.let {
                                     if (it.isNotEmpty()) it[0] else null
                                 }
+                                val typeVariable = TypeVariableName(
+                                    "T",
+                                    ClassName(pkg, "BasicRetrofitResultData")
+                                        .parameterizedBy(WildcardTypeName.producerOf(ANY))
+                                ).copy(reified = true)
                                 kspLogger.warn("ReturnType: ${returnType}")
                                 if (funName != "hashCode" && funName != "toString" && funName != "equals") {
                                     ts.addFunction(
                                         FunSpec.builder(func.simpleName.asString())
-                                            .addModifiers(KModifier.SUSPEND)
+                                            .addModifiers(KModifier.SUSPEND, KModifier.INLINE)
                                             .addKdoc(docS)
+                                            .addTypeVariable(typeVariable)
                                             .also { fs ->
                                                 // 添加 Parameters
                                                 for (parameter in parameters) {
@@ -88,8 +99,8 @@ class RepositoryGen {
                                                 // 添加返回值
                                                 if (returnType != null) {
                                                     fs.returns(
-                                                        returnType.toTypeName()
-                                                            .copy(nullable = true)
+                                                        typeVariable
+                                                            .copy(nullable = false)
                                                     )
                                                 }
                                                 val paramSb =
@@ -98,23 +109,40 @@ class RepositoryGen {
                                                 for (param in parameters) {
                                                     paramSb.append("${param.name?.asString()}, ")
                                                 }
-                                                paramSb.append(").obtain")
+                                                paramSb.append(").response")
                                                 val result = "\"\${result}\""
+                                                val eMsg = "\${e.message}"
                                                 fs.addCode(
                                                     """
                                                         return kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.IO) {
                                                             try {
                                                                 ${paramSb}
                                                                 timber.log.Timber.d($result)
-                                                                result
+                                                                resultSucOperation(this, result as T)
+                                                                result as T
                                                             } catch (e: Exception) {
                                                                 timber.log.Timber.e(e)
-                                                                null
+                                                                T::class.java.getDeclaredConstructor().newInstance().also {
+                                                                      it.code = -1
+                                                                      it.msg = "$eMsg"
+                                                                 }
                                                             }
                                                         }
                                                     """.trimIndent()
                                                 )
                                             }
+                                            // 返回成功的回调函数
+                                            .addParameter(
+                                                ParameterSpec
+                                                    .builder("resultSucOperation", LambdaTypeName
+                                                        .get(returnType = UNIT, parameters = listOf(
+                                                            ParameterSpec.builder("coroutineScope", ClassName("kotlinx.coroutines", "CoroutineScope")).build(),
+                                                            ParameterSpec.builder("result", typeVariable).build()
+                                                        )))
+                                                    .defaultValue("{ _, _ ->}")
+                                                    .addModifiers(KModifier.CROSSINLINE)
+                                                    .build()
+                                            )
                                             .build()
                                     )
                                 }

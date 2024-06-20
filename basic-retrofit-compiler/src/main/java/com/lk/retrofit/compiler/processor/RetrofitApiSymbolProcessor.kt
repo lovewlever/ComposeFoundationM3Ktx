@@ -6,6 +6,7 @@ import com.google.devtools.ksp.processing.Resolver
 import com.google.devtools.ksp.processing.SymbolProcessor
 import com.google.devtools.ksp.symbol.KSAnnotated
 import com.lk.retrofit.compiler.gen.ApiHiltModuleGen
+import com.lk.retrofit.compiler.gen.BasicRetrofitResultDataGen
 import com.lk.retrofit.compiler.gen.RepositoryGen
 
 /**
@@ -18,6 +19,7 @@ class RetrofitApiSymbolProcessor(
     override fun process(resolver: Resolver): List<KSAnnotated> {
         kspLogger.warn("RetrofitApiSymbolProcessor========================> START")
         ApiHiltModuleGen().gen(kspLogger, kspCodeGenerator, resolver)
+        BasicRetrofitResultDataGen().gen(kspLogger, kspCodeGenerator, resolver)
         RepositoryGen().gen(kspLogger, kspCodeGenerator, resolver)
         kspLogger.warn("RetrofitApiSymbolProcessor========================> END")
         return emptyList()

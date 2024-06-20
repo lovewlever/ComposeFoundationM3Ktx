@@ -104,13 +104,10 @@ productFlavors {
     }*/
 }
 
-/*static long releaseTime() {
-    return new Date().time
-}
-
-def static versionNameSuffixTime() {
-    return new Date().format("MMddHHmm", TimeZone.getTimeZone("UTC"))
-}*/
+/*
+fun buildTimestamp() = System.currentTimeMillis()
+fun versionNameSuffixTime(): String = SimpleDateFormat("MMddHHmm", Locale.CANADA).format(Date())
+*/
 
 dependencies {
 

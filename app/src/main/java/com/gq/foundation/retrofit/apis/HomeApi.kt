@@ -6,18 +6,16 @@ import dagger.hilt.android.scopes.ViewModelScoped
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST
+import java.util.Date
 
 @RetrofitApi
-interface AppApi {
+interface HomeApi {
 
     /**
-     * 请求Config
+     * 请求Home所需要的数据
      */
     @FormUrlEncoded
-    @POST("/abc")
-    fun getConfig(
-        @Field("field1") field: String,
-        @Field("params") params: Int
-    ): RetrofitCall<Result<String>>
+    @POST("abc/aaa")
+    fun queryHomePage(@Field("field1") field: String): RetrofitCall<Result<Date>>
 
 }

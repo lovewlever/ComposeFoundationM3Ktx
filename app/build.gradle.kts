@@ -38,7 +38,7 @@ android {
         targetCompatibility = BuildVersion.SourceTargetCompatibility
     }
     kotlinOptions {
-        jvmTarget = BuildVersion.JvmTarget
+        jvmTarget = libs.versions.jvmTarget.get()
     }
     buildFeatures {
         compose = true
@@ -94,14 +94,8 @@ dependencies {
     implementation(libs.gson)
 
     implementation(libs.coil.compose)
-    implementation(Libs.AccompanistSystemUIController)
-    implementation(Libs.AccompanistSwipeRefresh)
-    implementation(Libs.AccompanistPager)
-    implementation(Libs.AccompanistPagerIndicators)
     implementation(Libs.AccompanistPagerIndicators)
     implementation(Libs.AccompanistPermissions)
-    implementation(Libs.AccompanistPlaceholder)
-    implementation(Libs.AccompanistWebView)
 
     implementation(libs.document.file)
     implementation(libs.commons.codec)

@@ -17,7 +17,6 @@ import kotlinx.coroutines.launch
 /**
  * 自动横向轮播
  */
-@ExperimentalPagerApi
 @Composable
 fun AutoHorizontalCarouselCompose(
     modifier: Modifier = Modifier,

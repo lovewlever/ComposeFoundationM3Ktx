@@ -5,6 +5,7 @@ targetSdk = "34"
 versionCode = "1"
 versionName = "1.0.0"
 kotlinCompilerExtensionVersion = "2.0.0"
+jvmTarget = "17"
 
 agp = "8.5.0"
 kotlin = "2.0.0"

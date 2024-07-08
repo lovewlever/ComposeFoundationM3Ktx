@@ -34,8 +34,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = BuildVersion.SourceTargetCompatibility
-        targetCompatibility = BuildVersion.SourceTargetCompatibility
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
         jvmTarget = libs.versions.jvmTarget.get()
@@ -94,15 +94,15 @@ dependencies {
     implementation(libs.gson)
 
     implementation(libs.coil.compose)
-    implementation(Libs.AccompanistPagerIndicators)
-    implementation(Libs.AccompanistPermissions)
+    implementation(libs.accompanistPagerIndicators)
+    implementation(libs.accompanistPermissions)
 
     implementation(libs.document.file)
     implementation(libs.commons.codec)
     implementation(libs.hilt.android)
     implementation(libs.hilt.navigation.compose)
-    implementation(Libs.ProcessPhoenix)
-    implementation(Libs.BlankJUtilCodex)
+    implementation(libs.process.phoenix)
+    implementation(libs.blank.j.util.codex)
     implementation(libs.timber)
 
     implementation(libs.kotlin.stdlib.jdk8)

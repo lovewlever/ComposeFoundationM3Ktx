@@ -8,6 +8,7 @@ import com.google.devtools.ksp.symbol.KSAnnotated
 import com.lk.retrofit.compiler.gen.ApiHiltModuleGen
 import com.lk.retrofit.compiler.gen.BasicRetrofitResultDataGen
 import com.lk.retrofit.compiler.gen.RepositoryGen
+import com.lk.retrofit.compiler.gen.RetrofitInitGen
 
 /**
  * 生成请求类
@@ -21,6 +22,7 @@ class RetrofitApiSymbolProcessor(
         ApiHiltModuleGen().gen(kspLogger, kspCodeGenerator, resolver)
         BasicRetrofitResultDataGen().gen(kspLogger, kspCodeGenerator, resolver)
         RepositoryGen().gen(kspLogger, kspCodeGenerator, resolver)
+        RetrofitInitGen().gen(kspLogger, kspCodeGenerator, resolver)
         kspLogger.warn("RetrofitApiSymbolProcessor========================> END")
         return emptyList()
     }

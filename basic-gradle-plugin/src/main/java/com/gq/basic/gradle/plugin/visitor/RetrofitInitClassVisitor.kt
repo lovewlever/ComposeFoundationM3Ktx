@@ -1,5 +1,6 @@
 package com.gq.basic.gradle.plugin.visitor
 
+import com.gq.basic.gradle.plugin.common.Constants
 import groovyjarjarasm.asm.Opcodes
 import org.objectweb.asm.AnnotationVisitor
 import org.objectweb.asm.ClassVisitor
@@ -69,21 +70,13 @@ class RetrofitInitClassVisitor(private val nextClassVisitor: ClassVisitor): Clas
                         ---------onMethodExit END--------
                     """.trimIndent())
                     if (inSuper) {
-                        /*methodVisitor.visitVarInsn(ALOAD, 0)
-                        methodVisitor.visitMethodInsn(
-                            INVOKEVIRTUAL,
-                            "com/lk/auto/letter/AutoApplication",
-                            "autoApplicationRetrofitInit",
-                            "()Lcom/lk/auto/letter/retrofit/init/AutoApplicationRetrofitInit;",
-                            false
-                        )
-                        methodVisitor.visitMethodInsn(
-                            INVOKEVIRTUAL,
-                            "com/lk/auto/letter/retrofit/init/AutoApplicationRetrofitInit",
-                            "initRetrofit",
-                            "()V",
-                            false
-                        )*/
+                        methodVisitor.visitVarInsn(ALOAD, 0)
+                        methodVisitor.visitTypeInsn(NEW, "${Constants.RetrofitInitGenPackageNamePrefix}/retrofit/init/AutoApplicationRetrofitInit")
+                        methodVisitor.visitInsn(DUP)
+                        methodVisitor.visitMethodInsn(INVOKESPECIAL, "${Constants.RetrofitInitGenPackageNamePrefix}/retrofit/init/AutoApplicationRetrofitInit", "<init>", "()V", false)
+                        methodVisitor.visitVarInsn(ALOAD, 0)
+                        methodVisitor.visitMethodInsn(INVOKEVIRTUAL, "$className", "getBasicRetrofit", "()Lcom/gq/basicm3/retrofit/BasicRetrofit;", false)
+                        methodVisitor.visitMethodInsn(INVOKEVIRTUAL, "${Constants.RetrofitInitGenPackageNamePrefix}/retrofit/init/AutoApplicationRetrofitInit", "initRetrofit", "(Lcom/gq/basicm3/retrofit/BasicRetrofit;)V", false)
                     }
                 }
 

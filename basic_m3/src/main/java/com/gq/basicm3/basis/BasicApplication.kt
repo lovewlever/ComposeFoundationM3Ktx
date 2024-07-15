@@ -2,8 +2,13 @@ package com.gq.basicm3.basis
 
 import android.app.Application
 import com.gq.basicm3.AppContext
+import com.gq.basicm3.retrofit.BasicRetrofit
+import javax.inject.Inject
 
 open class BasicApplication: Application() {
+
+    @Inject
+    lateinit var basicRetrofit: BasicRetrofit
 
     protected open val initProcessPhoenix = false
     protected open val initTimberDebugTree = true

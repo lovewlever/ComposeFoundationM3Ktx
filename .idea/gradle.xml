@@ -21,6 +21,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/basic-gradle-plugin" />
             <option value="$PROJECT_DIR$/basic-retrofit-compiler" />
             <option value="$PROJECT_DIR$/basic_m3" />
             <option value="$PROJECT_DIR$/buildSrc" />

@@ -30,6 +30,8 @@ import kotlin.reflect.KProperty1
 import kotlin.reflect.full.declaredMemberProperties
 import kotlin.reflect.jvm.isAccessible
 
+// 自定义动态颜色 ：https://github.com/material-foundation/material-color-utilities
+
 @Composable
 fun M3LightDarkColorPreviewScreen() {
     val context = LocalContext.current

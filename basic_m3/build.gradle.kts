@@ -42,64 +42,30 @@ android {
         kotlinCompilerExtensionVersion =  libs.versions.kotlinCompilerExtensionVersion.get()
     }
 
-    /*flavorDimensions 'v'
-productFlavors {
-    vRelease {
-        dimension 'v'
-        versionNameSuffix ".${versionNameSuffixTime()}_release"
-        buildConfigField "long", "BuildTimestamp", "-1"
-        buildConfigField "boolean", "IsRelease", "true" // 是否是发布版
-        buildConfigField "String", "HostName", "\"http://crm.app12345.cn/\""
-        buildConfigField "String", "AppName", "\"\""
-        manifestPlaceholders = [appName: ""]
+    /*    flavorDimensions += listOf("variants")
+    productFlavors {
+        create("vRelease") {
+            dimension = "variants"
+            versionNameSuffix = ".${versionNameSuffixTime()}_release"
+            buildConfigField("boolean", "IS_RELEASE", "true")
+            buildConfigField("long", "BUILD_TIMESTAMP", "-1")
+        }
+        create("vRC") {
+            dimension = "variants"
+            versionNameSuffix = ".${versionNameSuffixTime()}_rc"
+            buildConfigField("boolean", "IS_RELEASE", "false")
+            buildConfigField("long", "BUILD_TIMESTAMP", "${buildTimestamp()}")
+        }
     }
 
-    vPreview {
-        dimension 'v'
-        versionNameSuffix ".${versionNameSuffixTime()}_preview"
-        buildConfigField "long", "BuildTimestamp", "${releaseTime()}"
-        buildConfigField "boolean", "IsRelease", "false" // 是否是发布版
-        buildConfigField "String", "HostName", "\"http://crm.app12345.cn/\""
-        buildConfigField "String", "AppName", "\"\""
-        manifestPlaceholders = [appName: ""]
-    }
 
-    vDeveloper {
-        dimension 'v'
-        versionNameSuffix ".${versionNameSuffixTime()}_developer"
-        buildConfigField "long", "BuildTimestamp", "${releaseTime()}"
-        buildConfigField "boolean", "IsRelease", "false" // 是否是发布版
-        buildConfigField "String", "HostName", "\"http://192.168.3.113:8081/\""
-        buildConfigField "String", "AppName", "\"\""
-        manifestPlaceholders = [appName: ""]
-    }
-}*/
-
-    /* applicationVariants.all { variant ->
-         variant.outputs.all { output -> //  ${variant.productFlavors[0].name}
-             def fileName = "appname_${variant.versionCode}_${variant.versionName}.apk"
-             def outFile = output.outputFile
-             if (outFile != null && outFile.name.endsWith('.apk')) {
-                 outputFileName = fileName
-             }
-         }
-     }*/
-
-    // build.gradle.kts
-    /*applicationVariants.all {
+    applicationVariants.all {
         val variant = this
         variant.outputs
                 .map { it as com.android.build.gradle.internal.api.BaseVariantOutputImpl }
                 .forEach { output ->
-                    this.productFlavors.forEach {
-                        println("ProductFlavors-Name: ${it.name}")
-                    }
-                    println("Variant.baseName: ${variant.flavorName}")
-                    val flavor = this.productFlavors.find { flavor -> flavor.name == variant.flavorName }
-                    println("Find Flavor: ${flavor}")
-                    val outputFileName = "${flavor?.manifestPlaceholders?.get("skinId")}.skin"
-                    println("OutputFileName: $outputFileName")
-                    output.outputFileName = outputFileName
+                    val fileName = "PigEarTagScanner_${variant.versionCode}_${variant.versionName}.apk"
+                    output.outputFileName = fileName
                 }
     }*/
 }
